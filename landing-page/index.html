@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Landing Page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Catálogo de plantas</h1>
+      <p>Seu guia sobre plantas</p>
+    </header>
+    <nav>
+      <a href="">Sobre</a>
+      <a href="">Galeria</a>
+      <a href="">Contato</a>
+    </nav>
+    <main>
+      <article class="about-us" id="sobre-nos">
+        <h2>Sobre nós</h2>
+        <p class="container">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
+          quam! Provident, autem quisquam! Repellat molestiae eos corrupti
+          minima nam. Corporis reprehenderit veritatis perspiciatis, dolores
+          facere impedit delectus consequuntur quibusdam nesciunt. Lorem, ipsum
+          dolor sit amet consectetur adipisicing elit. Dicta obcaecati ea,
+          aliquid illum pariatur facilis at adipisci amet saepe sapiente! Natus
+          labore cupiditate laborum, delectus sapiente officiis rerum aspernatur
+          vel?
+        </p>
+      </article>
+
+      <article class="gallery" id="galeria">
+        <h2>Galeria de plantas</h2>
+        <table>
+            <!-- table row = linha da tabela -->
+            <tr>
+                <!-- table data = dado da tabela -->
+                <td>
+                    <img src="./images/cactos.jpg" alt="Imagem de fundo branco com uma planta, um cact">
+                </td>
+                <td>
+                    <img src="./images/cravo.jpg" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/plant.jpg" alt="">
+                </td>
+                <td>
+                    <img src="./images/header-img.jpg" alt="">
+                </td>
+            </tr>
+        </table>
+      </article>
+
+      <article class="contact" id="contato">
+        <h2>Contato</h2>
+        <form>
+            <div>
+                <label>Nome completo:</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>E-mail:</label>
+                <input type="email"/>
+            </div>
+            <div>
+                <label>Mensagem</label>
+                <textarea cols="3" rows="10"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+      </article>
+
+    </main>
+    <footer></footer>
+  </body>
+</html>

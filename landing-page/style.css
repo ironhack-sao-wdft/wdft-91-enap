@@ -1,0 +1,23 @@
+header {
+    background-image: url("./images/header-img.jpg");
+    background-position: bottom right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    width: 50%;
+}
+
+h2 {
+    border: 2px solid black;
+    /* margin: espacamento entre um elemento e o outro */
+    margin: 100px;
+    /* padding: espacamento entre conteudo do elemento e a borda */
+    padding: 50px;
+}
