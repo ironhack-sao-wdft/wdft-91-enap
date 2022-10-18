@@ -1,81 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Landing Page</title>
-  </head>
-  <body>
-    <header>
-      <h1>Catálogo de plantas</h1>
-      <p>Seu guia sobre plantas</p>
-    </header>
-    <nav>
-      <a href="">Sobre</a>
-      <a href="">Galeria</a>
-      <a href="">Contato</a>
-    </nav>
-    <main>
-      <article class="about-us" id="sobre-nos">
-        <h2>Sobre nós</h2>
-        <p class="container">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
-          quam! Provident, autem quisquam! Repellat molestiae eos corrupti
-          minima nam. Corporis reprehenderit veritatis perspiciatis, dolores
-          facere impedit delectus consequuntur quibusdam nesciunt. Lorem, ipsum
-          dolor sit amet consectetur adipisicing elit. Dicta obcaecati ea,
-          aliquid illum pariatur facilis at adipisci amet saepe sapiente! Natus
-          labore cupiditate laborum, delectus sapiente officiis rerum aspernatur
-          vel?
-        </p>
-      </article>
 
-      <article class="gallery" id="galeria">
-        <h2>Galeria de plantas</h2>
-        <table>
-            <!-- table row = linha da tabela -->
-            <tr>
-                <!-- table data = dado da tabela -->
-                <td>
-                    <img src="./images/cactos.jpg" alt="Imagem de fundo branco com uma planta, um cact">
-                </td>
-                <td>
-                    <img src="./images/cravo.jpg" alt="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="./images/plant.jpg" alt="">
-                </td>
-                <td>
-                    <img src="./images/header-img.jpg" alt="">
-                </td>
-            </tr>
-        </table>
-      </article>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Landing Page</title>
+</head>
 
-      <article class="contact" id="contato">
-        <h2>Contato</h2>
-        <form>
-            <div>
-                <label>Nome completo:</label>
-                <input type="text"/>
-            </div>
-            <div>
-                <label>E-mail:</label>
-                <input type="email"/>
-            </div>
-            <div>
-                <label>Mensagem</label>
-                <textarea cols="3" rows="10"></textarea>
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
-      </article>
+<body>
+  <header>
+    <h1>Catálogo de plantas</h1>
+  </header>
+  <nav>
+    <a href="#sobre-nos">Sobre nós</a>
+    <a href="#galeria">Galeria de plantas</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <main>
+    <article>
+      <h2 class="about-us" id="sobre-nos">Sobre nós</h2>
+      <p class="container-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda doloribus,
+        quia omnis animi cumque
+        sunt earum nemo expedita mollitia sapiente, optio enim delectus esse. Accusantium, cum tempora!
+        Incidunt, modi cum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt amet
+        repellat laudantium quam, exercitationem maiores dolorum nemo, porro accusantium qui saepe! Mollitia cum
+        consequatur modi at voluptates a atque.</p>
+      <div>
+        <section>
+          <h3>Tipos de plantas</h3>
+          <ol class="container-width">
+            <li>Carófitas</li>
+            <li>Briófitas</li>
+            <li>Vasculares sem sementes</li>
+            <li>Gimnospermas</li>
+            <li>Angiospermas</li>
+          </ol>
+        </section>
+        <section>
+          <h3>Curiosidades sobre plantas</h3>
+          <ul class="container-width">
+            <li>Plantas podem ser terapêuticas e ajudar no estresse</li>
+            <li>As árvores são os organismos com vida mais longa na Terra</li>
+            <li>O dente-de-leão é comestível das pétalas às raízes</li>
+            <li>Nós comemos apenas 0,06% das plantas comestíveis existentes</li>
+            <li>Cerca 68% das plantas estão ameaçadas de extinção</li>
+          </ul>
+        </section>
+      </div>
+    </article>
+    <article>
+      <h2 id="galeria">Galeria de plantas</h2>
+      <section class="gallery">
+        <div>
+          <img src="./images/cravo.jpg" alt="">
+          <img src="./images/cactos.jpg" alt="">
+        </div>
+        <div>
+          <img src="./images/plant.jpg" alt="">
+          <img src="./images/rose.jpg" alt="">
+        </div>
+      </section>
+    </article>
+    <article>
+      <h2 class="contact" id="contato">Contato</h2>
+      <form class="container-width">
+        <div>
+          <label>Nome</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>Endereço de e-mail</label>
+          <input type="email" />
+        </div>
+        <div>
+          <label>Escreva a sua mensagem</label>
+          <textarea cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit">Enviar mensagem</button>
+      </form>
+    </article>
+  </main>
+  <footer>
+    <a href="https://www.ecycle.com.br/plantas/#Plantas-e-suas-condicoes-de-vida">Fonte da pesquisa</a>
+    <p>Ironhack. WDFT SAO 91 ENAP</p>
+  </footer>
+</body>
 
-    </main>
-    <footer></footer>
-  </body>
 </html>

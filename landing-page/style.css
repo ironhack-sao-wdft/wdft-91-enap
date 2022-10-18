@@ -1,23 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
 header {
     background-image: url("./images/header-img.jpg");
-    background-position: bottom right;
+    background-position: bottom 75% right;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: none;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* NAVIGATION */
+nav {
+    padding: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    padding: 20px;
+    transition: 2s;
+}
+
+a:hover {
+    background-color: #66754E;
+}
+
+a:focus {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/* MAIN 1: ABOUT */
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+h3 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.container-width {
+    width: 50%;
+    margin: auto;
+}
+
+/* MAIN 2: GALLERY */
+img {
+    width: 100%;
     height: 400px;
 }
 
-img {
-    width: 100%;
+.gallery {
+    display: flex;
 }
 
-.container {
-    width: 50%;
+/* MAIN 3: FORM */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-h2 {
-    border: 2px solid black;
-    /* margin: espacamento entre um elemento e o outro */
-    margin: 100px;
-    /* padding: espacamento entre conteudo do elemento e a borda */
-    padding: 50px;
+form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+form>button {
+    align-self: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    background-color: #66754E;
+    border-radius: 10px;
+    color: white;
+}
+
+form>button:hover {
+    cursor: pointer;
+    opacity: 75%;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #66754E;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 500px) {
+    .container-width {
+        width: 90%;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
 }
