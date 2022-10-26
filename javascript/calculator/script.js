@@ -1,3 +1,4 @@
+// criando o modelo de classe
 class Calculator {
     sum = (num1, num2) => {
         return Number(num1) + Number(num2)
@@ -10,21 +11,19 @@ class Calculator {
 
 // criando o meu objeto
 const calculadora = new Calculator()
-// calculadora.sum(num1, num2)
 
-// passo 1: identificar todos os elementos html que vão ser manipulados
+// identificar todos os elementos html que vão ser manipulados
 const numberOne = document.getElementById("numberOne")
 const numberTwo = document.querySelector("#numberTwo")
 const result = document.getElementById("result")
 const resultBtn = document.querySelector("#resultBtn")
 
-//console.log(numberOne)
+console.log(numberOne) //retorna o elemento html
 
-// eventos -> desencadear um acontecimento
+// eventos = desencadear um acontecimento
 // addEventListener(o que precisa "ouvir", callback)
     // -> adicionar um evento a partir daquilo que ele "ouvir"
 resultBtn.addEventListener("click", () => {
-
     let inputOne = numberOne.value
     console.log(inputOne)
     let inputTwo = numberTwo.value
