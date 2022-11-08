@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import MovieCard from './components/MovieCard/MovieCard';
+import Spinner from './components/Spinner/Spinner';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false)
+  // isLoading = true
+
+  // esta condição é verdadeira ? se sim faça isso : se não faça isso
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { isLoading ? <Spinner /> : <MovieCard /> }
     </div>
-  );
+  )
+
+  // if(isLoading) {
+  //   return (
+  //     <div className="App">
+  //       <Spinner />
+  //     </div>
+  //   )
+  // } else {
+  //   return (
+  //     <div className="App">
+  //       <MovieCard />
+  //     </div>
+  //   )
+  // }
 }
 
 export default App;
