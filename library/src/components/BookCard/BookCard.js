@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import BookForm from '../BookForm/BookForm';
 
 function BookCard() {
     const [books, setBooks] = useState([
@@ -29,6 +30,14 @@ function BookCard() {
         }
     ])
 
+    // adicionar um novo item da lista
+    const addBook = (newBook) => {
+        const updatedBooks = [...books, newBook]
+        setBooks(updatedBooks) // books = array de cinco itens
+        //books = [...books, newBook] 
+    }
+
+    // deletar um item da lista
     const deleteBook = (bookKey) => {
         const newBooks = books.filter((book, index) => {
             return index !== bookKey
@@ -37,6 +46,7 @@ function BookCard() {
         setBooks(newBooks)
     }
 
+    // renderizar todos os itens da lista    
     const renderBooks = books.map((book, index) => {
         return (
             <Col key={index}>
@@ -60,8 +70,12 @@ function BookCard() {
         )
     })
 
+    // informa que a função addBook está sendo passada por props para o BookForm
     return (
         <Container>
+            <Row>
+                <BookForm addBook={ addBook } />
+            </Row>
             <Row>
                 {renderBooks}
             </Row>
