@@ -2,11 +2,9 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import RecipeCard from '../RecipeCard/RecipeCard';
 import AddRecipe from '../AddRecipe/AddRecipe';
-import recipesData from '../../../recipes.json'
 import { Navigate } from "react-router-dom";
 
-function RecipeList() {
-    const [recipes, setRecipes] = useState(recipesData)
+function RecipeList({ recipes, setRecipes }) {
     const [isLogged, setIsLogged] = useState(true)
 
     if(!isLogged) {

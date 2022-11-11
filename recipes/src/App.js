@@ -8,17 +8,19 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import ErrorPage from './components/Pages/ErrorPage/ErrorPage';
 import RecipeDetails from './components/Recipes/RecipeDetails/RecipeDetails';
 import recipesData from './recipes.json';
+import { useState } from 'react';
 
 function App() {
+  const [recipes, setRecipes] = useState(recipesData)
+
   return (
     <div className="App">
       <NavigationBar />
       <Routes>
         <Route path="/" element={ <HomePage /> } />
         <Route path="/sobre" element={ <About /> } />
-        <Route path="/receitas" element={ <RecipeList /> } />
-        {/* nomedosite.com/produtos/geladeira-marca */}
-        <Route path="/receitas/:receitaId" element={ <RecipeDetails recipesData={ recipesData } /> } />
+        <Route path="/receitas" element={ <RecipeList recipes={ recipes } setRecipes={ setRecipes } /> } />
+        <Route path="/receitas/:receitaId" element={ <RecipeDetails recipes={ recipes }  /> } />
         <Route path="*" element={ <ErrorPage /> } />
       </Routes>
     </div>

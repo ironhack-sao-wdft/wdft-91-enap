@@ -1,10 +1,10 @@
 import { Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 
-function RecipeDetails({ recipesData }) {
+function RecipeDetails({ recipes }) {
     const { receitaId } = useParams()
 
-    const foundRecipe = recipesData.find((oneRecipe) => {
+    const foundRecipe = recipes.find((oneRecipe) => {
         return oneRecipe.name === receitaId;
     })
 
