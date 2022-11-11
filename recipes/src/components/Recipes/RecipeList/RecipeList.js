@@ -14,8 +14,8 @@ function RecipeList({ recipes, setRecipes }) {
     }
 
     const deleteRecipe = (recipeKey) => {
-        const newRecipes = recipes.filter((recipe, index) => {
-            return index !== recipeKey
+        const newRecipes = recipes.filter((recipe) => {
+            return recipe.name !== recipeKey
         })
 
         setRecipes(newRecipes)
