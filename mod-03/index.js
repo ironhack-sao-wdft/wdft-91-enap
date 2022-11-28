@@ -2,10 +2,14 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import { v4 as uuidv4 } from 'uuid'
 
+// configuração padrão do dotenv
 dotenv.config()
+// inicialização do express
 const app = express()
+// permitir a interpretação de json()
 app.use(express.json())
 
+// banco de dados
 let data = [
     {
         name: "Ana",
@@ -13,15 +17,15 @@ let data = [
     }
 ]
 
-// ROTAS
-// MÉTODO GET
+// -------- ROTAS --------
+// método GET
 app.get('/', (request, response) => {
     // no json a gente a resposta que a gente quer obter
     // SEMPRE retornamos algo (uma resposta)
     return response.status(200).json(data)
 })
 
-// MÉTODO POST
+// método POST
 app.post('/create', (request, response) => {
     const newData = {
         // capturar o body da requisição e adicionar um id
@@ -34,7 +38,7 @@ app.post('/create', (request, response) => {
     return response.status(201).json(data)
 })
 
-// MÉTODO PUT
+// método PUT
 app.put('/edit/:id', (request, response) => {
     // seta o id como parâmetro
     const { id } = request.params
@@ -57,7 +61,7 @@ app.put('/edit/:id', (request, response) => {
     return response.status(200).json(data[index])
 })
 
-// MÉTODO DELETE
+// método DELETE
 app.delete('/delete/:id', (request, response) => {
     const { id } = request.params
 
@@ -73,4 +77,5 @@ app.delete('/delete/:id', (request, response) => {
     return response.status(200).json(data)
 })
 
+// executar o servidor na porta 8080
 app.listen(Number(process.env.PORT), () => console.log('server on port 8080!'))
