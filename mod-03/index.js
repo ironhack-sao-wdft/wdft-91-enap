@@ -35,8 +35,42 @@ app.post('/create', (request, response) => {
 })
 
 // MÉTODO PUT
-app.put()
+app.put('/edit/:id', (request, response) => {
+    // seta o id como parâmetro
+    const { id } = request.params
+
+    // reconhecendo o item
+    const update = data.find(
+        item => item.id === id
+    )
+
+    // descobre a posição dele dentro da lista
+    const index = data.indexOf(update)
+
+    // array[posição] = item
+    // atualiza o item existente
+    data[index] = {
+        ...update,
+        ...request.body
+    }
+
+    return response.status(200).json(data[index])
+})
 
 // MÉTODO DELETE
+app.delete('/delete/:id', (request, response) => {
+    const { id } = request.params
+
+    const deleteById = data.find(
+        item => item.id === id      
+    )
+
+    const index = data.indexOf(deleteById)
+
+    // exclui só o item que está posicionado no index
+    data.splice(index, 1)
+
+    return response.status(200).json(data)
+})
 
 app.listen(Number(process.env.PORT), () => console.log('server on port 8080!'))
