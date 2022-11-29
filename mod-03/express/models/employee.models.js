@@ -24,7 +24,8 @@ const employeeSchema = new Schema(
             default: true
         },
         address: {
-            city: { type: String } 
+            city: { type: String },
+            state: { type: String }
         }
     },
     {
