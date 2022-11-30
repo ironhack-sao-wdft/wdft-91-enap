@@ -1,35 +1,33 @@
 import express from 'express'
 import { v4 as uuidv4 } from 'uuid'
+import EmployeeModel from '../models/employee.models.js'
 
 const router = express.Router()
 
-// banco de dados
-let data = [
-    {
-        name: "Ana",
-        department: "T.I"
-    }
-]
-
 // -------- ROTAS --------
 // método GET
-router.get('/', (request, response) => {
-    // no json a gente coloca a resposta que a gente quer obter
-    // SEMPRE retornamos algo (uma resposta)
-    return response.status(200).json(data)
+router.get('/', async (request, response) => {
+    try {
+        const employees = await EmployeeModel.find()
+
+        return response.status(200).json(employees)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado."})
+    }
 })
 
 // método POST
-router.post('/create', (request, response) => {
-    const newData = {
-        // capturar o body da requisição e adicionar um id
-        ...request.body,
-        id: uuidv4()
+router.post('/create', async (request, response) => {
+    try {
+        const newEmployee = await EmployeeModel.create(request.body)
+    
+        return response.status(201).json(newEmployee)
+    } catch (error) {
+        console.log(error)
+
+        return response.status(500).json({ msg: "Algo está errado."})
     }
-
-    data.push(newData)
-
-    return response.status(201).json(data)
 })
 
 // método PUT
