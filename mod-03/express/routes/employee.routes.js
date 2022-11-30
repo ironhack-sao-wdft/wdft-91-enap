@@ -31,42 +31,35 @@ router.post('/create', async (request, response) => {
 })
 
 // método PUT
-router.put('/edit/:id', (request, response) => {
-    // seta o id como parâmetro
-    const { id } = request.params
+router.put('/edit/:id', async (request, response) => {
+    try {
+        const { id } = request.params
 
-    // reconhecendo o item
-    const update = data.find(
-        item => item.id === id
-    )
-
-    // descobre a posição dele dentro da lista
-    const index = data.indexOf(update)
-
-    // array[posição] = item
-    // atualiza o item existente
-    data[index] = {
-        ...update,
-        ...request.body
+        const update = await EmployeeModel.findByIdAndUpdate(
+            id,
+            { ...request.body },
+            { new: true, runValidators: true }
+        ) 
+        
+        return response.status(200).json(update)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado."})
     }
-
-    return response.status(200).json(data[index])
 })
 
 // método DELETE
-router.delete('/delete/:id', (request, response) => {
-    const { id } = request.params
+router.delete('/delete/:id', async (request, response) => {
+    try {
+        const { id } = request.params
 
-    const deleteById = data.find(
-        item => item.id === id      
-    )
-
-    const index = data.indexOf(deleteById)
-
-    // exclui só o item que está posicionado no index
-    data.splice(index, 1)
-
-    return response.status(200).json(data)
+        const deleteEmployee = await EmployeeModel.findByIdAndDelete(id)
+    
+        return response.status(200).json(deleteEmployee)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado."})
+    }
 })
 
 export default router
