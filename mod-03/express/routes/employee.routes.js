@@ -17,6 +17,24 @@ router.get('/', async (request, response) => {
     }
 })
 
+// GET by Id
+router.get('/:id', async (request, response) => {
+    try {
+        const { id } = request.params
+
+        const employee = await EmployeeModel.findById(id)
+
+        if(!employee) {
+            return response.status(404).json("Funcionário não foi encontrado")
+        }
+
+        return response.status(200).json(employee)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado."})
+    }
+})
+
 // método POST
 router.post('/create', async (request, response) => {
     try {
