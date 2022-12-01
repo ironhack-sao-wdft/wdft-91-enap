@@ -12,9 +12,12 @@ const todoSchema = new Schema(
         deadline: {
             type: Date
         },
+        // um responsável pela tarefa
         responsable: {
-            type: String,
-            enum: ["Ana", "João"]
+            // pegar o id do que queremos recuperar
+            type: Schema.Types.ObjectId,
+            // a referência do que a gente quer recuperar
+            ref: "Employee"
         }
     },
     {
