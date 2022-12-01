@@ -1,54 +1,58 @@
 import express from 'express'
-import { v4 as uuidv4 } from 'uuid'
+import TodoModel from '../models/todo.models.js'
 
 const router = express.Router()
 
-let data = []
+router.get('/', async (request, response) => {
+    try {
+        const todos = await TodoModel.find()
 
-router.get('/', (request, response) => {
-    return response.status(200).json(data)
-})
+        return response.status(200).json(todos)
+    } catch (error) {
+        console.log(error)
 
-router.post('/create', (request, response) => {
-    const newData = {
-        ...request.body,
-        id: uuidv4()
+        return response.status(500).json({ msg: "Algo está errado." })
     }
-
-    data.push(newData)
-
-    return response.status(201).json(data)
 })
 
-router.put('/edit/:id', (request, response) => {
-    const { id } = request.params
-
-    const update = data.find(
-        item => item.id === id
-    )
-
-    const index = data.indexOf(update)
-
-    data[index] = {
-        ...update,
-        ...request.body
+router.post('/create', async (request, response) => {
+    try {
+        const create = await TodoModel.create(request.body)
+        return response.status(201).json(create)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado." })
     }
-
-    return response.status(200).json(data[index])
 })
 
-router.delete('/delete/:id', (request, response) => {
-    const { id } = request.params
+router.put('/edit/:id', async (request, response) => {
+    try {
+        const { id } = request.params
 
-    const deleteById = data.find(
-        item => item.id === id      
-    )
+        const update = await TodoModel.findByIdAndUpdate(
+            id,
+            { ...request.body },
+            { new: true, runValidators: true }
+        )
 
-    const index = data.indexOf(deleteById)
+        return response.status(200).json(update)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado." })
+    }
+})
 
-    data.splice(index, 1)
-
-    return response.status(200).json(data)
+router.delete('/delete/:id', async (request, response) => {
+    try {
+        const { id } = request.params
+    
+        const deleteTodo = await TodoModel.findByIdAndDelete(id)
+    
+        return response.status(200).json(deleteTodo)
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({ msg: "Algo está errado." })
+    }
 })
 
 export default router
