@@ -1,5 +1,6 @@
 import express from 'express'
 import EmployeeModel from '../models/employee.models.js'
+import TodoModel from '../models/todo.models.js'
 
 const router = express.Router()
 
@@ -7,7 +8,7 @@ const router = express.Router()
 // método GET
 router.get('/', async (request, response) => {
     try {
-        const employees = await EmployeeModel.find()
+        const employees = await EmployeeModel.find().populate("todos")
 
         return response.status(200).json(employees)
     } catch (error) {
@@ -21,7 +22,7 @@ router.get('/:id', async (request, response) => {
     try {
         const { id } = request.params
 
-        const employee = await EmployeeModel.findById(id)
+        const employee = await EmployeeModel.findById(id).populate("todos")
 
         if(!employee) {
             return response.status(404).json("Funcionário não foi encontrado")
@@ -71,6 +72,7 @@ router.delete('/delete/:id', async (request, response) => {
         const { id } = request.params
 
         const deleteEmployee = await EmployeeModel.findByIdAndDelete(id)
+        await TodoModel.deleteMany({ responsable: id })
     
         return response.status(200).json(deleteEmployee)
     } catch (error) {
