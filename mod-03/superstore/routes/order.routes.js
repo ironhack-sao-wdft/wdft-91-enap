@@ -50,13 +50,25 @@ router.get('/:id', async (request, response) => {
         // pegar o id de parâmetro
         const { id } = request.params
         // pegar o pedido específico e popular todos os campos
-        const getOrderById = await OrderModel.findById(id).populate("products")
+        const getOrderById = await OrderModel.findById(id)
+            .populate("products")
+            .populate({
+                path: "products",
+                populate: {
+                    path: "product",
+                    model: "Product"
+                }
+            })
         
         // criar um total
+        let total = 0
         // somar a quantidade de produtos com os preços
+        getOrderById.products.forEach((order) => {
+            total += order.product.price * order.amount
+        })
         
         // retorna para status 200
-        return response.status(200).json(getOrderById)
+        return response.status(200).json({ getOrderById, total: total })
     } catch (error) {
         console.log(error)
         return response.status(500).json({msg: 'algo deu errado :('})
