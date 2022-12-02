@@ -21,7 +21,7 @@ const productSchema = new Schema(
         orders: [
             {
                 type: Schema.Types.ObjectId,
-                ref: ""
+                ref: "Order"
             }
         ]
     }
